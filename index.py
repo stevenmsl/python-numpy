@@ -44,6 +44,24 @@ print(x.shape) #should be (2,3,2)
 # and then select the first element in the third dimension
 print(x[...,0])
 print(x[...,0].shape) # The third dimension is gone – the array changes to a scalar. For example [1,10] -> 1
+
+#%% new axis
+x = np.array(
+    [
+     [[1,10],[2,20],[3,30]], 
+     [[4,40],[5,50],[6,60]]
+    ]
+    )
+print(x[:,np.newaxis,:,:].shape)
+# expand by one unit-length dimension between first dimension and the second -  
+# so everything after the first dimension got pushed down the hierarch 
+# [
+#  #Col 1    
+#  [[[ 1 10] [ 2 20] [ 3 30]]] #Row 1 
+#  [[[ 4 40] [ 5 50] [ 6 60]]] #Row 2 
+# ]
+
+print(x[:,np.newaxis,:,:])
 #%% Advanced indexing 
 x = np.array(
     [
@@ -57,7 +75,7 @@ print(x.shape) #should be (3,2)
 #The column index is [0,1,0]
 #so for row 1, I will pick col 1, for row 2 col 2, and for row 3 col 1.
 print(x[[0,1,2],[0,1,0]]) 
-#%% broadcasting
+#%% non broadcasting
 x = np.array(
              [
               [ 0,  1,  2],
@@ -78,3 +96,24 @@ cols = np.array(
     )
 
 print(x[rows,cols])
+#%% broadcasting
+x = np.array(
+             [
+              [ 0,  1,  2],
+              [ 3,  4,  5],
+              [ 6,  7,  8],
+              [ 9, 10, 11]])
+rows = np.array([0,3])
+cols = np.array([0,2])
+
+# The resulting array will have just one row [0, 11]
+# with 0 comes from the first col of the firs row, and 11 from the third col of the 4th row 
+print(x[rows,cols]) 
+# rows[:, np.newaxis] becomes a 2 dimensional array
+# shape: (2,1)
+# [
+#  [0] # row 1 
+#  [3] # row 2
+# ]
+print(x[rows[:, np.newaxis],cols])
+print(x[np.ix_(rows,cols)])
