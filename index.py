@@ -102,7 +102,8 @@ x = np.array(
               [ 0,  1,  2],
               [ 3,  4,  5],
               [ 6,  7,  8],
-              [ 9, 10, 11]])
+              [ 9, 10, 11]
+             ])
 rows = np.array([0,3])
 cols = np.array([0,2])
 
@@ -112,8 +113,9 @@ print(x[rows,cols])
 # rows[:, np.newaxis] becomes a 2 dimensional array
 # shape: (2,1)
 # [
-#  [0] # row 1 
-#  [3] # row 2
+#  [0] # row 1 - Elements will come from the first row of x. Which columns though? [0,2]  – the first and the third column  
+#  [3] # row 2 - Elements will come from the fourth row of x.
 # ]
 print(x[rows[:, np.newaxis],cols])
 print(x[np.ix_(rows,cols)])
+
