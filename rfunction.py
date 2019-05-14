@@ -17,16 +17,28 @@ print(np.r_['-1',a,a,a])
 print(np.r_['-1',a,a,a].shape)
 
 #%% minimum number of dimensions
+print('1-dimensional array')
 a = np.r_['0', [1,2,3], [4,5,6]]
 print(a)
 #(6,)
 print(a.shape)
+
+print('2-dimensional array')
 a = np.r_['0,2', [1,2,3], [4,5,6]]
 # Should be a 2-dimensional array
 print(a)
 #(2,3)
 print(a.shape)
+
+a = np.r_['1,2', [1,2,3], [4,5,6]]
+# Should be a 2-dimensional array
+print(a)
+#(1,6)
+print(a.shape)
+
+
 # Should be a 3-dimensional array
+print('3-dimensional array')
 a = np.r_['0,3', [1,2,3], [4,5,6]]
 print(a)
 #(2, 1 , 3)
@@ -43,4 +55,3 @@ a = np.r_['0,2,0', [1,2,3], [4,5,6]]
 print(a)
 #(6,1)
 print(a.shape)
-
