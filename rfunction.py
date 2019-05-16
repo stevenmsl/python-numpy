@@ -50,7 +50,7 @@ print(a)
 #(2,3)
 print(a.shape)
 
-a = np.r_['0,2,0', [1,2,3], [4,5,6]]
+a = np.r_['0,1,0', [1,2,3], [4,5,6]]
 # Should be a 2-dimensional array
 print(a)
 #(6,1)
